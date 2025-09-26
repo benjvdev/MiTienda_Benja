@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MiTienda_BenjaTheme{
                 Surface (modifier = Modifier.fillMaxSize()){
-                    TarjetaConMensaje(Mensaje("Benja","Hola gay, el cangri es muy gay"))
+                    TarjetaConMensaje(Mensaje("Cangri","Inviten bolivianos rikos sipo"))
                 }
             }
 
@@ -77,7 +77,7 @@ fun  TarjetaConMensaje(mensaje: Mensaje){
 fun PreviewTarjetaConMensaje(){
     MiTienda_BenjaTheme{
         Surface(modifier = Modifier.fillMaxSize()) {
-            TarjetaConMensaje(Mensaje("Benja","Hola gay, el cangri es muy gay"))
+            TarjetaConMensaje(Mensaje("Cangri","Inviten bolivianos rikos sipo"))
         }
     }
 }
