@@ -20,14 +20,24 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.navigation.compose.composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.example.mitienda_benja.model.Mensaje
+import com.example.mitienda_benja.navigation.NavigationEvent
 import com.example.mitienda_benja.ui.theme.MiTienda_BenjaTheme
+import com.example.mitienda_benja.viewmodel.MainViewModel
+import kotlinx.coroutines.flow.collectLatest
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import com.example.mitienda_benja.navigation.AppRoute
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +47,49 @@ class MainActivity : ComponentActivity() {
             MiTienda_BenjaTheme{
                 Surface (modifier = Modifier.fillMaxSize()){
                     TarjetaConMensaje(Mensaje("Cangri","Inviten bolivianos rikos sipo"))
+                }
+                val viewModel: MainViewModel = viewModel()
+                val navController = rememberNavController()
+
+                LaunchedEffect(Unit) {
+                    viewModel.navEvents.collectLatest {
+                        event ->
+                        when(event){
+                            is NavigationEvent.NavigateTo ->{
+                                navController.navigate(event.appRoute.route)
+                                {
+                                    event.popUpRoute?.let {
+                                        popUpTo(it.route){
+                                            inclusive=event.inclusive
+                                        }
+                                        launchSingleTop=event.singleTop
+                                        restoreState=true
+                                    }
+                                }
+                            }
+                            is NavigationEvent.NavigateUp ->navController.navigateUp()
+                            is NavigationEvent.PopBackStack -> navController.popBackStack()
+                        }
+                    }
+                }//Final del bloque launceeffect para manejar la navegacion
+                Scaffold(modifier = Modifier.fillMaxSize())
+                {
+                    innerPadding ->
+                    NavHost(
+                        NavController=navController,
+                        startDestination = AppRoute.Home.route,
+                        modifier = Modifier.padding(innerPadding)
+                    ){
+                        composable(AppRoute.Home.route){
+                            //HomeScreen(navController,viewModel)
+                        }
+                        composable(AppRoute.Home.route){
+                            //ProfileScreen(navController,viewModel)
+                        }
+                        composable(AppRoute.Home.route){
+                            //SettingsScreen(navController,viewModel)
+                        }
+                    }
                 }
             }
 

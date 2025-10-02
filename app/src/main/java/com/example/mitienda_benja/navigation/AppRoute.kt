@@ -1,10 +1,17 @@
 package com.example.mitienda_benja.navigation
 
 //declaramos un conjunto cerrado y seguro de rutas
-sealed class AppRoute (val route: String){ //cada objeto dentro de la sealed class representa una ruta
-    data object Home : AppRoute("home")
-    data object Library : AppRoute("library")
-    data object  Profile : AppRoute("profile")
+sealed class AppRoute(val route:String) {
+    data object Home:AppRoute("home")
+    data object Profile: AppRoute("profile")
+    data object Settings: AppRoute("settings")
 
-    //tarea crear una ruta con argumentos para pantallas de detalles por ejemplo el detalle de un producto
+    data class Detail (val itemId:String): AppRoute("detail/{itemId}")
+    {
+        fun buildRoute():String{
+            return route.replace("{itemId}",itemId)
+        }
+    }
+
+
 }
