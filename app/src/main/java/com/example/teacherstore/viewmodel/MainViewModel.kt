@@ -1,15 +1,23 @@
-package com.example.mitienda_benja.viewmodel
+package com.example.teacherstore.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.example.teacherstore.navigation.AppRoute
+import com.example.teacherstore.navigation.NavigationEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
-import com.example.mitienda_benja.navigation.AppRoute.Home.route
-import com.example.mitienda_benja.navigation.AppRoute
-import com.example.mitienda_benja.navigation.NavigationEvent
+
+/*import com.example.teacherstore.navigation.AppRoute
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch*/
+
+
 class MainViewModel: ViewModel() {
 
 

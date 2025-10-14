@@ -1,6 +1,7 @@
-package com.example.mitienda_benja.navigation
+package com.example.teacherstore.navigation
 
-//Enumeramos los tipos de eventos que podemos emitir o observar
+//enumeramos los tipos de eventos que podemos emitir o observar
+
 sealed class  NavigationEvent{
     data class NavigateTo(
         val appRoute: AppRoute,
@@ -8,9 +9,10 @@ sealed class  NavigationEvent{
         val inclusive:Boolean=false,
         val singleTop: Boolean=false
 
-    ): NavigationEvent()
+        ): NavigationEvent()
 
     object PopBackStack: NavigationEvent()
     object NavigateUp: NavigationEvent()
 
 }
+

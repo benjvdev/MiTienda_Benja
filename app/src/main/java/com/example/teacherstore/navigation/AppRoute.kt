@@ -1,8 +1,8 @@
-package com.example.mitienda_benja.navigation
+package com.example.teacherstore.navigation
 
-//declaramos un conjunto cerrado y seguro de rutas
 sealed class AppRoute(val route:String) {
     data object Home:AppRoute("home")
+    data object Register: AppRoute("register")
     data object Profile: AppRoute("profile")
     data object Settings: AppRoute("settings")
 

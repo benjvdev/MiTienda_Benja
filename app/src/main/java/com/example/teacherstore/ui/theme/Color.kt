@@ -1,4 +1,4 @@
-package com.example.mitienda_benja.ui.theme
+package com.example.teacherstore.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

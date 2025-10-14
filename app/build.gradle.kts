@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mitienda_benja"
+    namespace = "com.example.teacherstore"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.mitienda_benja"
+        applicationId = "com.example.teacherstore"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -41,8 +41,15 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.material.icons.extended)
+    //implementation("androidx.navigation:navigation-compose:<latest>")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation("androidx.datastore:datastore-preferences:1.1.0")
+  //  implementation(libs.androidx.lifecycle.viemodel.compose)
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+   // implementation(libs.androidx.navigation.compose.v274)
+    implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -51,8 +58,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.navigation.compose)
-    implementation(libs.androidx.games.activity)
+//    implementation(libs.androidx.navigation.compose.jvmstubs)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

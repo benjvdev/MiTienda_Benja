@@ -1,4 +1,4 @@
-package com.example.mitienda_benja.ui.theme
+package com.example.teacherstore.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun MiTienda_BenjaTheme(
+fun TeacherStoreTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

@@ -1,4 +1,4 @@
-package com.example.mitienda_benja
+package com.example.teacherstore
 
 import org.junit.Test
 
