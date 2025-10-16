@@ -2,6 +2,8 @@ package com.example.teacherstore.navigation
 
 sealed class AppRoute(val route:String) {
     data object Home:AppRoute("home")
+
+    data object PantallaPrincipal:AppRoute("pantalla_principal")
     data object Register: AppRoute("register")
     data object Profile: AppRoute("profile")
     data object Settings: AppRoute("settings")

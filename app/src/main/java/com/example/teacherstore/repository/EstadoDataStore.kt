@@ -1,4 +1,4 @@
-package com.example.teacherstore.model
+package com.example.teacherstore.repository
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -24,7 +24,4 @@ class EstadoDataStore(private val context: Context){
             preferencias[ESTADO_ACTIVADO]
         }
     }
-
-
-
 }

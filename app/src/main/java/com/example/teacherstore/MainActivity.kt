@@ -9,6 +9,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,9 +17,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.teacherstore.navigation.AppRoute
 import com.example.teacherstore.navigation.NavigationEvent
 import com.example.teacherstore.ui.screens.HomeScreen
+import com.example.teacherstore.ui.screens.PantallaPrincipal
 import com.example.teacherstore.ui.screens.ProfileScreen
 import com.example.teacherstore.ui.screens.RegistroScreen
 import com.example.teacherstore.ui.theme.TeacherStoreTheme
+import com.example.teacherstore.viewmodel.EstadoViewModel
 import com.example.teacherstore.viewmodel.MainViewModel
 import com.example.teacherstore.viewmodel.UsuarioViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -28,11 +31,12 @@ import kotlinx.coroutines.flow.collectLatest
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        WindowCompat.setDecorFitsSystemWindows(window,false)
         setContent {
             TeacherStoreTheme{
                 val viewModel: MainViewModel= viewModel()
                 val viewModelRegistro: UsuarioViewModel=viewModel()
+                val viewModelEstado: EstadoViewModel=viewModel()
                 val navController = rememberNavController()
 
                 /**La función LaunchedEffect en Jetpack Compose se usa para ejecutar
@@ -93,12 +97,15 @@ class MainActivity : ComponentActivity() {
                     innerPadding ->
                     NavHost(
                         navController=navController,
-                        startDestination = AppRoute.Register.route,
+                        startDestination = AppRoute.PantallaPrincipal.route,
                         modifier = Modifier.padding(innerPadding)
 
                     ){
-                        composable(AppRoute.Home.route) {
+                        composable(AppRoute.Home.route){
                             HomeScreen(viewModel,navController)
+                        }
+                        composable(AppRoute.PantallaPrincipal.route) {
+                            PantallaPrincipal(Modifier,viewModelEstado, )
                         }
                         composable(AppRoute.Register.route) {
                             RegistroScreen(viewModelRegistro,navController)
